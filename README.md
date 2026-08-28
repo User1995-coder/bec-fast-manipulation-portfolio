@@ -1,59 +1,119 @@
 # BEC Fast Manipulation
 
-Numerical tools and reproducible simulations for the fast manipulation of Bose-Einstein condensates.
+Scientific Python library for modelling and controlling the dynamics of Bose-Einstein condensates.
 
-This project focuses on the modelling and control of Bose-Einstein condensate dynamics, with particular emphasis on fast decompression protocols and painted optical potentials.
+The project implements reusable numerical models for condensate expansion, shortcut-to-adiabaticity protocols and optical trapping, with an emphasis on modularity, physical validation and reproducibility.
 
-## Features
+## Core capabilities
 
-- Castin-Dum scaling dynamics
-- Thomas-Fermi modelling
-- Thermal and free expansion
-- Delta-kick cooling
-- Shortcut-to-adiabaticity protocols
-- Painted optical potential modelling
-- Monte Carlo robustness analysis
+### Bose-Einstein condensate dynamics
 
-## Repository structure
+* Castin-Dum scaling dynamics
+* Thomas-Fermi approximation
+* Free and thermal expansion
+* Numerical integration of time-dependent trapping dynamics
 
-`src/bec_fast_manipulation/` contains the reusable physical and numerical models.
+### Shortcut to adiabaticity
 
-`experiments/` contains the reproducible simulation workflows, figures and numerical results.
+* Reverse-engineered STA trajectories
+* Retro-sinusoidal scaling protocols
+* Numerical search and optimization of admissible control trajectories
+* Conversion between scaling dynamics and time-dependent trap frequencies
 
-`tests/` contains the test suite.
+### Painted optical potentials
 
-`docs/` and `scripts/physics/` contain additional documentation and physical validation tools.
+* Crossed painted dipole-potential modelling
+* Finite-Gaussian beam model
+* Mapping between trapping frequencies and experimental control parameters
+* Validation of harmonic approximations against the full optical potential
+
+### Robustness and numerical analysis
+
+* Monte Carlo perturbation generation
+* Statistical analysis utilities
+* Scientific plotting infrastructure
+* Reproducible numerical validation tools
+
+## Architecture
+
+The project follows a `src`-based Python package structure:
+
+```text
+src/bec_fast_manipulation/
+├── analysis/
+├── castin_dum/
+├── constants/
+├── monte_carlo/
+├── painted_potential/
+├── retro_sinusoidal/
+├── sta_optimizer/
+├── thermal_expansion/
+└── thomas_fermi/
+```
+
+The physical models are designed as independent reusable components rather than experiment-specific scripts.
+
+## Physical modelling
+
+A typical modelling chain is:
+
+```text
+Initial trapped condensate
+        ↓
+Thomas-Fermi equilibrium
+        ↓
+Castin-Dum scaling dynamics
+        ↓
+Shortcut-to-adiabaticity trajectory
+        ↓
+Time-dependent trap frequencies
+        ↓
+Painted optical-potential controls
+        ↓
+Robustness and numerical validation
+```
+
+The code separates:
+
+* physical models;
+* numerical integration;
+* optimization;
+* statistical analysis;
+* visualization and reporting.
+
+This separation makes the different components independently testable and reusable.
 
 ## Installation
+
+Clone the repository and install the package in editable mode:
 
 ```bash
 pip install -e ".[dev]"
 ```
 
-## Running the tests
+## Tests
+
+Run the complete test suite with:
 
 ```bash
 python -m pytest
 ```
 
-## Scientific workflow
+The tests cover the numerical models and physical consistency of the implemented equations.
 
-The main modelling workflow is:
+## Technical stack
 
-```text
-BEC equilibrium
-    ↓
-Thomas-Fermi model
-    ↓
-Castin-Dum scaling dynamics
-    ↓
-Shortcut to adiabaticity
-    ↓
-Time-dependent trap frequencies
-    ↓
-Painted-potential controls
-    ↓
-Robustness analysis
-```
+* Python
+* NumPy
+* SciPy
+* Matplotlib
+* pandas
+* pytest
+* Git
 
-More detailed information about the physical models, assumptions and numerical parameters can be found in the individual experiment directories.
+## Project focus
+
+This repository is a cleaned public version of a scientific computing project developed around the fast manipulation of trapped Bose-Einstein condensates.
+
+The public repository focuses on the reusable physics and numerical modelling components.
+
