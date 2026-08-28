@@ -1,0 +1,16 @@
+# Python virtual environments
+.venv/
+
+# Python packaging metadata
+*.egg-info/
+
+# Python cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# PyCharm / IntelliJ
+.idea/
+
+# Mathematica notebooks
+*.nb
